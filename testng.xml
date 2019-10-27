@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="D:/testoveShtokal">
+        <classes>
+            <class name="com.perlinka.qa.testcases.MainPageTests">
+                <methods>
+                    <include name="mainPageTitleTest"/>
+                    <include name="imgLogoTest"/>
+                    <include name="saleOutMenuBtnTest"/>
+                </methods>
+            </class>
+            <class name="com.perlinka.qa.testcases.SaleOutPageTests">
+                <methods>
+                    <include name="saleOutPageTitleTest"/>
+                    <include name="goToProductCardPage"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
