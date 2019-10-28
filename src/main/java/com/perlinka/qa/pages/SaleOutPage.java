@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import javax.xml.xpath.XPath;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -15,16 +17,26 @@ public class SaleOutPage extends TestBase {
     @FindBy(css = "a[class ='item__link']" )
     List<WebElement> products;
 
-    //to test my test :D
-    @FindBy(xpath = "/html/body/div[1]/main/div/div/div/div[3]/div[1]/div[1]/a")
-    WebElement testProduct;
+    @FindBy (xpath = "//form/div[2]/ul/li[5]/label")
+    WebElement tufliGirlCheckBox;
 
+    @FindBy (xpath = "//button[contains(tesxt(),'Показавть']")
+    WebElement applayBtn;
     //initializing the Page Objects:
     public SaleOutPage(){
         PageFactory.initElements(driver, this);
     }
 
     //Methods
+    public void ApplayFilteringButton(){
+        applayBtn.click();
+
+    }
+    public void clickOnTufliGirlCheckBox()
+    {
+        tufliGirlCheckBox.click();
+
+    }
     public String verifySaleOutPageTitle(){
         return driver.getTitle();
     }
@@ -35,14 +47,6 @@ public class SaleOutPage extends TestBase {
         int index = random.nextInt(products.size());
         products.get(index).click();
         return new ProductPage();
-        //to test my test :D
-         /*testProduct.click();
-        return  new ProductPage();*/
-
-
-
-
-
     }
 
 
