@@ -7,9 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import javax.xml.xpath.XPath;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class SaleOutPage extends TestBase {
 
@@ -20,8 +18,21 @@ public class SaleOutPage extends TestBase {
     @FindBy (xpath = "//form/div[2]/ul/li[5]/label")
     WebElement tufliGirlCheckBox;
 
-    @FindBy (xpath = "//button[contains(tesxt(),'Показавть']")
+    @FindBy (xpath = "//form/div[1]/ul/li[3]/label")
+    WebElement snickersBoyCheckBox;
+
+    @FindBy (xpath = "//main/div/div/form/div[4]/button")
     WebElement applayBtn;
+
+    @FindBy (className = "item__price")
+    List<WebElement> itemsPrice;
+
+    @FindBy (xpath = "//nav[@class = 'pager']/ul/li")
+    List<WebElement> pages;
+
+    @FindBy (className = "item__name")
+    WebElement productNames;
+
     //initializing the Page Objects:
     public SaleOutPage(){
         PageFactory.initElements(driver, this);
@@ -37,11 +48,34 @@ public class SaleOutPage extends TestBase {
         tufliGirlCheckBox.click();
 
     }
+
+    public void clickOnSnickersBoysCheckBox()
+    {
+        snickersBoyCheckBox.click();
+
+
+    }
+
     public String verifySaleOutPageTitle(){
         return driver.getTitle();
     }
 
-    public ProductPage clickOnProductCard(){
+    public Boolean verifyPriceVisibility(){
+        for (WebElement item: itemsPrice)
+        {   System.out.println(item.findElement(By.tagName("b")).getText());
+            if (!item.isDisplayed())
+            return false;}
+        return true;
+
+    }
+
+    public int countNumberOfPages(){
+
+        //System.out.println(pages.size());
+         return pages.size();
+    }
+
+    public ProductPage clickOnRandomProductCard(){
 
         Random random = new Random();
         int index = random.nextInt(products.size());
@@ -49,5 +83,44 @@ public class SaleOutPage extends TestBase {
         return new ProductPage();
     }
 
+    public void goToNextPage(int n) {
 
+        System.out.println("Next Page: " + pages.get(n)
+                .findElement(By.tagName("form")).getAttribute("name"));
+        pages.get(n).click();
+
+
+    }
+
+    public void printNumbersForMokasiny() {
+
+        for (WebElement product: products) {
+            if(product.findElement(By.className("item__name")).getText().contains("окасины"))
+            {
+                System.out.println(product.findElement(By.className("item__order-number"))
+                        .getText());
+            }
+        }
+
+    }
+
+    public int countNumberOfProductsOnPage()
+    {
+
+        /*for (WebElement product: products)
+        {
+             System.out.println(product.findElement(By.className("item__name")).getText());
+        }*/
+        return products.size();
+    }
+    public List<String> addProductsToList()
+    {
+        List<String> items = new ArrayList<String>();
+        for (WebElement product : products){
+            items.add(product.findElement(By.className("item__order-number")).getText() +
+                    " LINK: " +product.getAttribute("href") );
+        }
+
+        return items;
+    }
 }

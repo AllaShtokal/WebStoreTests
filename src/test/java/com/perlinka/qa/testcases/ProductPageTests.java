@@ -26,7 +26,7 @@ public class ProductPageTests extends TestBase {
         initialization();
         mainPage = new MainPage();
         saleOutPage = mainPage.clickOnSaleOutMenuBtn();
-        productPage = saleOutPage.clickOnProductCard();
+        productPage = saleOutPage.clickOnRandomProductCard();
 
     }
 
