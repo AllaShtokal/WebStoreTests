@@ -15,6 +15,7 @@ public class MainPage extends TestBase {
     WebElement imgLogo;
 
     //initializing the Page Objects:
+
     public MainPage(){
       PageFactory.initElements(driver, this);
     }
