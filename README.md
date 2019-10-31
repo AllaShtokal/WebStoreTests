@@ -1,4 +1,5 @@
 # testoveShtokal
+Selenium, TestNG
 
 На сайте интернет магазина
 https://www.perlinka.ua
