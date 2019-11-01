@@ -86,7 +86,6 @@ public class SaleOutPage extends TestBase {
     }
 
     public void goToNextPage(int n) {
-
         System.out.println("Next Page: " + pages.get(n)
                 .findElement(By.tagName("form")).getAttribute("name"));
         pages.get(n).click();

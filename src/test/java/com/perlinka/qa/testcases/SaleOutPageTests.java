@@ -56,7 +56,7 @@ public class SaleOutPageTests extends TestBase {
                         "on the page [ " + driver.getCurrentUrl() + " ] is not displayed");
             }
             //Assert.assertTrue(productPage.checkDiscountEndIsNotNull(), "DiscountEnd " +
-                  //  "on the page [ " + driver.getCurrentUrl() + " ] is NULL");
+            //  "on the page [ " + driver.getCurrentUrl() + " ] is NULL");
             Assert.assertTrue(productPage.verifySizesAreAvailable(), "No Size " +
                     "on the page [ " + driver.getCurrentUrl() + " ] is available");
             driver.navigate().back();
@@ -103,81 +103,67 @@ public class SaleOutPageTests extends TestBase {
         saleOutPage.clickOnTufliGirlCheckBox();
         saleOutPage.ApplayFilteringButton();
         //считаем здесь
-        int numOfGirlsTufli = 0;
-        for (int i = 1; i <= saleOutPage.countNumberOfPages(); ++i) {
-            listGirlsTufli.addAll(saleOutPage.addProductsToList());
-            numOfGirlsTufli += saleOutPage.countNumberOfProductsOnPage();
-            System.out.println(saleOutPage.countNumberOfProductsOnPage());
-            if (i != saleOutPage.countNumberOfPages())
-                saleOutPage.goToNextPage(i);
-        }
-        System.out.println("ДевочкиТуфли = " + numOfGirlsTufli + " шт.");
+
+        Count(listGirlsTufli);
+        System.out.println("ДевочкиТуфли = " + listGirlsTufli.size() + " шт.");
 
         //МальчикиКроссовки
         saleOutPage.clickOnTufliGirlCheckBox();
         saleOutPage.clickOnSnickersBoysCheckBox();
         saleOutPage.ApplayFilteringButton();
         //считаем здесь
-        int numOfBoysSnickers = 0;
-        for (int i = 1; i <= saleOutPage.countNumberOfPages(); ++i) {
-            listBoysSnickers.addAll(saleOutPage.addProductsToList());
-            numOfBoysSnickers += saleOutPage.countNumberOfProductsOnPage();
-            System.out.println(saleOutPage.countNumberOfProductsOnPage());
-            if (i != saleOutPage.countNumberOfPages())
-                saleOutPage.goToNextPage(i);
-        }
-        System.out.println("МальчикиКроссовки = " + numOfBoysSnickers + " шт.");
+        Count(listBoysSnickers);
+        System.out.println("МальчикиКроссовки = " + listBoysSnickers.size() + " шт.");
 
         //И Мальчики, и Девочки
         saleOutPage.clickOnTufliGirlCheckBox();
         saleOutPage.ApplayFilteringButton();
         //считаем здесь
-
-        int numOfAllProducts = saleOutPage.countNumberOfProductsOnPage();
-        listTotal.addAll(saleOutPage.addProductsToList());
-        for (int i = 1; i <= saleOutPage.countNumberOfPages(); ++i) {
-            if (i != saleOutPage.countNumberOfPages())
-                saleOutPage.goToNextPage(i);
-            numOfAllProducts += saleOutPage.countNumberOfProductsOnPage();
-            listTotal.addAll(saleOutPage.addProductsToList());
-            System.out.println(saleOutPage.countNumberOfProductsOnPage());
-        }
-        System.out.println("Мальчики И Дeвочки вместе = " + numOfAllProducts + " шт.");
+        Count(listTotal);
+        System.out.println("Мальчики И Дeвочки вместе = " + listTotal.size() + " шт.");
 
         //If we delete two elements in listTotal
         //listTotal.remove(1);
         //listTotal.remove(5);
         //делаем сравнение
         Assert.assertEquals(listGirlsTufli.size() + listBoysSnickers.size(), listTotal.size(),
-                ProductsNotMatched(listGirlsTufli,listBoysSnickers, listTotal));
+                ProductsNotMatched(listGirlsTufli, listBoysSnickers, listTotal));
 
 
     }
 
-    public String ProductsNotMatched(ArrayList<String> l1,ArrayList<String> l2, ArrayList<String> l3) {
+    public List Count(ArrayList l){
+        for(int i =0;;) {
+            l.addAll(saleOutPage.addProductsToList());
+            System.out.println(saleOutPage.countNumberOfProductsOnPage());
+            ++i;
+            if (i < saleOutPage.countNumberOfPages())
+                saleOutPage.goToNextPage(i);
+            else break;
+        }
+        return l;
+    }
+
+    public String ProductsNotMatched(ArrayList<String> l1, ArrayList<String> l2, ArrayList<String> l3) {
         StringBuilder s = new StringBuilder(" \n Elements are not matched : \n");
-        for(String el: l1)
-        {
-            if(l3.contains(el))
+        for (String el : l1) {
+            if (l3.contains(el))
                 continue;
             else s.append(el).append("\n");
         }
-        for(String el: l2)
-        {
-            if(!l3.contains(el))
+        for (String el : l2) {
+            if (!l3.contains(el))
                 s.append(el).append("\n");
         }
 
 
-    return s.toString();
+        return s.toString();
     }
 
     @AfterMethod
-    public void tearDown(){
+    public void tearDown() {
         driver.quit();
     }
-
-
 
 
 }
