@@ -99,26 +99,19 @@ public class SaleOutPageTests extends TestBase {
         ArrayList<String> listBoysSnickers = new ArrayList<String>();
         ArrayList<String> listTotal = new ArrayList<String>();
 
-        //ДевочкиТуфли
         saleOutPage.clickOnTufliGirlCheckBox();
         saleOutPage.ApplayFilteringButton();
-        //считаем здесь
-
         Count(listGirlsTufli);
         System.out.println("ДевочкиТуфли = " + listGirlsTufli.size() + " шт.");
 
-        //МальчикиКроссовки
         saleOutPage.clickOnTufliGirlCheckBox();
         saleOutPage.clickOnSnickersBoysCheckBox();
         saleOutPage.ApplayFilteringButton();
-        //считаем здесь
         Count(listBoysSnickers);
         System.out.println("МальчикиКроссовки = " + listBoysSnickers.size() + " шт.");
 
-        //И Мальчики, и Девочки
         saleOutPage.clickOnTufliGirlCheckBox();
         saleOutPage.ApplayFilteringButton();
-        //считаем здесь
         Count(listTotal);
         System.out.println("Мальчики И Дeвочки вместе = " + listTotal.size() + " шт.");
 
