@@ -15,13 +15,15 @@ public class SaleOutPage extends TestBase {
     @FindBy(css = "a[class ='item__link']" )
     List<WebElement> products;
 
-    @FindBy (xpath = "//form/div[2]/ul/li[5]/label")
-    WebElement tufliGirlCheckBox;
+   @FindBy (xpath = "//form/div[2]/ul/li[5]/label")
+   //@FindBy (xpath = "//li/label[contains(text(),'Туфли')"]
+   WebElement tufliGirlCheckBox;
 
     @FindBy (xpath = "//form/div[1]/ul/li[3]/label")
+    //@FindBy (xpath = "//li/label[contains(text(),'Кроссовки')"]
     WebElement snickersBoyCheckBox;
 
-    @FindBy (xpath = "//main/div/div/form/div[4]/button")
+    @FindBy (xpath = "//button[contains(text(),'Показать')]")
     WebElement applayBtn;
 
     @FindBy (className = "item__price")
@@ -34,7 +36,7 @@ public class SaleOutPage extends TestBase {
     WebElement productNames;
 
     //initializing the Page Objects:
-    public SaleOutPage(){
+    SaleOutPage(){
         PageFactory.initElements(driver, this);
     }
 

@@ -51,8 +51,8 @@ public class SaleOutPageTests extends TestBase {
         for (int k = 0; k < NUM_OF_PRODUCTS_TO_TEST; ++k) {
             productPage = saleOutPage.clickOnRandomProductCard();
             Vector<Boolean> prices = productPage.checkNewPriceVisibility();
-            for (int i = 0; i < prices.size(); ++i) {
-                Assert.assertTrue(prices.get(i), "New price of the product " +
+            for (Boolean price : prices) {
+                Assert.assertTrue(price, "New price of the product " +
                         "on the page [ " + driver.getCurrentUrl() + " ] is not displayed");
             }
             //Assert.assertTrue(productPage.checkDiscountEndIsNotNull(), "DiscountEnd " +
@@ -142,7 +142,6 @@ public class SaleOutPageTests extends TestBase {
             listTotal.addAll(saleOutPage.addProductsToList());
             System.out.println(saleOutPage.countNumberOfProductsOnPage());
         }
-
         System.out.println("Мальчики И Дeвочки вместе = " + numOfAllProducts + " шт.");
 
         //If we delete two elements in listTotal
@@ -151,27 +150,26 @@ public class SaleOutPageTests extends TestBase {
         //делаем сравнение
         Assert.assertEquals(listGirlsTufli.size() + listBoysSnickers.size(), listTotal.size(),
                 ProductsNotMatched(listGirlsTufli,listBoysSnickers, listTotal));
-        // если не совпадает
+
 
     }
 
     public String ProductsNotMatched(ArrayList<String> l1,ArrayList<String> l2, ArrayList<String> l3) {
-        String s = " \n Elements is not matched : \n";
+        StringBuilder s = new StringBuilder(" \n Elements is not matched : \n");
         for(String el: l1)
         {
             if(l3.contains(el))
                 continue;
-            else s+= el +"\n";
+            else s.append(el).append("\n");
         }
         for(String el: l2)
         {
-            if(l3.contains(el))
-                continue;
-            else s+= el +"\n";
+            if(!l3.contains(el))
+                s.append(el).append("\n");
         }
 
 
-    return s;
+    return s.toString();
     }
 
     @AfterMethod
