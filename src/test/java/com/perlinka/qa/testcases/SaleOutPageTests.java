@@ -155,7 +155,7 @@ public class SaleOutPageTests extends TestBase {
     }
 
     public String ProductsNotMatched(ArrayList<String> l1,ArrayList<String> l2, ArrayList<String> l3) {
-        StringBuilder s = new StringBuilder(" \n Elements is not matched : \n");
+        StringBuilder s = new StringBuilder(" \n Elements are not matched : \n");
         for(String el: l1)
         {
             if(l3.contains(el))
