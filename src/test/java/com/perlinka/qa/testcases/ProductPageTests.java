@@ -30,7 +30,7 @@ public class ProductPageTests extends TestBase {
 
     }
 
-    @Test
+    @Test(priority = 1)
     public void newPriceVisibilityTest(){
         Vector<Boolean> vector = productPage.checkNewPriceVisibility();
         for (int i = 0; i<vector.size();++i)
@@ -39,7 +39,7 @@ public class ProductPageTests extends TestBase {
         }
     }
 
-    //@AfterMethod
+    @AfterMethod
     public void tearDown(){
         driver.quit();
     }
