@@ -67,7 +67,7 @@ public class SaleOutPageTests extends TestBase {
 
     @Test(priority = 4)
     public void TestTask2() {
-        saleOutPage.clickOnTufliGirlCheckBox();
+        saleOutPage.selectCheckBox("Туфли Девочки");
         saleOutPage.ApplayFilteringButton();
 
         for (int i = 1; i <= saleOutPage.countNumberOfPages(); ++i) {
@@ -83,7 +83,7 @@ public class SaleOutPageTests extends TestBase {
     @Test(priority = 5)
     public void TestTask3() {
 
-        saleOutPage.clickOnSnickersBoysCheckBox();
+        saleOutPage.selectCheckBox("Кроссовки Мальчики");
         saleOutPage.ApplayFilteringButton();
 
         for (int i = 1; i <= saleOutPage.countNumberOfPages(); ++i) {
@@ -99,18 +99,18 @@ public class SaleOutPageTests extends TestBase {
         ArrayList<String> listBoysSnickers = new ArrayList<String>();
         ArrayList<String> listTotal = new ArrayList<String>();
 
-        saleOutPage.clickOnTufliGirlCheckBox();
+        saleOutPage.selectCheckBox("Туфли Девочки");
         saleOutPage.ApplayFilteringButton();
         Count(listGirlsTufli);
         System.out.println("ДевочкиТуфли = " + listGirlsTufli.size() + " шт.");
 
-        saleOutPage.clickOnTufliGirlCheckBox();
-        saleOutPage.clickOnSnickersBoysCheckBox();
+        saleOutPage.selectCheckBox("Туфли Девочки");
+        saleOutPage.selectCheckBox("Кроссовки Мальчики");
         saleOutPage.ApplayFilteringButton();
         Count(listBoysSnickers);
         System.out.println("МальчикиКроссовки = " + listBoysSnickers.size() + " шт.");
 
-        saleOutPage.clickOnTufliGirlCheckBox();
+        saleOutPage.selectCheckBox("Туфли Девочки");
         saleOutPage.ApplayFilteringButton();
         Count(listTotal);
         System.out.println("Мальчики И Дeвочки вместе = " + listTotal.size() + " шт.");

@@ -45,18 +45,21 @@ public class SaleOutPage extends TestBase {
         applayBtn.click();
 
     }
-    public void clickOnTufliGirlCheckBox()
+    public void selectCheckBox(String s)
     {
+        if(s == "Туфли Девочки")
         tufliGirlCheckBox.click();
+        else if (s == "Кроссовки Мальчики")
+            snickersBoyCheckBox.click();
 
     }
 
-    public void clickOnSnickersBoysCheckBox()
+    /*public void clickOnSnickersBoysCheckBox()
     {
         snickersBoyCheckBox.click();
 
 
-    }
+    }*/
 
     public String verifySaleOutPageTitle(){
         return driver.getTitle();
