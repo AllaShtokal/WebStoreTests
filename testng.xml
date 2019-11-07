@@ -4,7 +4,6 @@
     <listeners>
         <listener class-name="com.qa.ExtentReportListener.ExtentReportNG" />
     </listeners>
-
     <test verbose="2" preserve-order="true" name="D:/testoveShtokal">
         <classes>
             <class name="com.perlinka.qa.testcases.MainPageTests">
