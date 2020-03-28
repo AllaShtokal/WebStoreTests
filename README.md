@@ -3,7 +3,7 @@ Selenium, TestNG
 
 PL
 Na stronie sklepu internetowego https://www.perlinka.ua.
-1.Przeprowadzić testy na takich przedmiotach:
+1. Przeprowadzić testy na takich przedmiotach:
 w sekcji "Sprzedaż" należy sprawdzić na trzech produktach, czy karta produktu ma promocyjną cenę i czy jest dostępny przynajmniej jeden rozmiar. 
 Aby to zrobić, należy na początku pierwszej strony wybrać produkt, wpisać się do karty produktu i przeprowadzić niezbędne kontrole. Wykonać dla 3 towarów (wybór liczby towarów do sprawdzenia powinien być elastyczny).
 2. Zastosuj filtr "Dziewczyna - Buty" Sprawdź, czy wszystkie produkty w tej sekcji mają swoją cenę (bez wpadania do karty).
