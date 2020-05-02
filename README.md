@@ -1,7 +1,21 @@
 # testoveShtokal
 Selenium, TestNG
 
+EN
+On the website of the online store
+https://www.perlinka.ua
 
+Test on the following items:
+1. in the Sales section check on three products whether there is a promotional price in the product’s card and at least one size is available
+To do this, randomly, on the first page, select the product, fall through the product card and perform the necessary checks
+Run for 3 products (make the number of checked products flexible)
+2. Apply the filter "Girl - shoes"
+Check that all products in this section have a price (without falling into the card)
+3. Apply the filter "Boy - Sneakers"
+Print "Order number" for all products with the name "Moccasins"
+4. Apply a filter for two types of goods
+Compare the total number of products for two types with the sum of each separately
+If differences are found, display these products in the drop test information.
 
 
 RU
