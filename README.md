@@ -1,4 +1,4 @@
-# testoveShtokal
+# WebStoreTests
 Selenium, TestNG
 
 EN
